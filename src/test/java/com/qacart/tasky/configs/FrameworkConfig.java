@@ -1,6 +1,8 @@
 package com.qacart.tasky.configs;
 
 
+import com.qacart.tasky.converter.ConvertStringToEnumType;
+import com.qacart.tasky.enums.BrowserType;
 import org.aeonbits.owner.Config;
 
 
@@ -11,6 +13,10 @@ import org.aeonbits.owner.Config;
         "file:${user.dir}/src/test/resources/config.properties"
 })
 public interface FrameworkConfig extends Config {
+
+    @ConverterClass(ConvertStringToEnumType.class)
+    @DefaultValue("CHROME")
+    BrowserType browser();
 
     @DefaultValue("https://tasky-be.qacart.com/api")
     @Key("api.url")
